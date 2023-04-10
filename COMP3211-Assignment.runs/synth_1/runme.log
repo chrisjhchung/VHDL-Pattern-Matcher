@@ -1,0 +1,240 @@
+
+*** Running vivado
+    with args -log single_cycle_core.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source single_cycle_core.tcl
+
+
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source single_cycle_core.tcl -notrace
+create_project: Time (s): cpu = 00:00:00 ; elapsed = 00:00:05 . Memory (MB): peak = 1016.574 ; gain = 0.000
+Command: synth_design -top single_cycle_core -part xc7a100tftg256-3
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 30196
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:13 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'single_cycle_core' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd:57]
+INFO: [Synth 8-3491] module 'program_counter' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/program_counter.vhd:28' bound to instance 'pc' of component 'program_counter' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd:162]
+INFO: [Synth 8-638] synthesizing module 'program_counter' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/program_counter.vhd:35]
+INFO: [Synth 8-256] done synthesizing module 'program_counter' (1#1) [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/program_counter.vhd:35]
+INFO: [Synth 8-3491] module 'adder_4b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/adder_4b.vhd:25' bound to instance 'next_pc' of component 'adder_4b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd:168]
+INFO: [Synth 8-638] synthesizing module 'adder_4b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/adder_4b.vhd:32]
+INFO: [Synth 8-256] done synthesizing module 'adder_4b' (2#1) [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/adder_4b.vhd:32]
+INFO: [Synth 8-638] synthesizing module 'mux_2to1_4b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd:32]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd:45]
+INFO: [Synth 8-638] synthesizing module 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:32]
+INFO: [Synth 8-256] done synthesizing module 'mux_2to1_1b' (3#1) [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:32]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'mux_2to1_4b' (4#1) [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd:32]
+INFO: [Synth 8-3491] module 'instruction_memory' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/instruction_memory.vhd:27' bound to instance 'insn_mem' of component 'instruction_memory' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd:181]
+INFO: [Synth 8-638] synthesizing module 'instruction_memory' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/instruction_memory.vhd:34]
+INFO: [Synth 8-256] done synthesizing module 'instruction_memory' (5#1) [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/instruction_memory.vhd:34]
+INFO: [Synth 8-3491] module 'sign_extend_4to16' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/sign_extend_4to16.vhd:25' bound to instance 'sign_extend' of component 'sign_extend_4to16' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd:187]
+INFO: [Synth 8-638] synthesizing module 'sign_extend_4to16' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/sign_extend_4to16.vhd:30]
+INFO: [Synth 8-256] done synthesizing module 'sign_extend_4to16' (6#1) [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/sign_extend_4to16.vhd:30]
+INFO: [Synth 8-3491] module 'control_unit' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/control_unit.vhd:44' bound to instance 'ctrl_unit' of component 'control_unit' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd:191]
+INFO: [Synth 8-638] synthesizing module 'control_unit' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/control_unit.vhd:53]
+INFO: [Synth 8-256] done synthesizing module 'control_unit' (7#1) [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/control_unit.vhd:53]
+INFO: [Synth 8-3491] module 'mux_2to1_4b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd:25' bound to instance 'mux_reg_dst' of component 'mux_2to1_4b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd:199]
+INFO: [Synth 8-638] synthesizing module 'mux_2to1_4b__parameterized1' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd:32]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'mux_2to1_4b__parameterized1' (7#1) [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd:32]
+INFO: [Synth 8-3491] module 'register_file' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/register_file.vhd:26' bound to instance 'reg_file' of component 'register_file' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd:205]
+INFO: [Synth 8-638] synthesizing module 'register_file' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/register_file.vhd:38]
+INFO: [Synth 8-256] done synthesizing module 'register_file' (8#1) [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/register_file.vhd:38]
+INFO: [Synth 8-3491] module 'mux_2to1_16b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:25' bound to instance 'mux_alu_src' of component 'mux_2to1_16b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd:216]
+INFO: [Synth 8-638] synthesizing module 'mux_2to1_16b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:32]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-3491] module 'mux_2to1_1b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd:25' bound to instance 'bit_mux' of component 'mux_2to1_1b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:45]
+INFO: [Synth 8-256] done synthesizing module 'mux_2to1_16b' (9#1) [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:32]
+INFO: [Synth 8-3491] module 'adder_16b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/adder_16b.vhd:25' bound to instance 'alu' of component 'adder_16b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd:222]
+INFO: [Synth 8-638] synthesizing module 'adder_16b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/adder_16b.vhd:32]
+INFO: [Synth 8-256] done synthesizing module 'adder_16b' (10#1) [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/adder_16b.vhd:32]
+INFO: [Synth 8-3491] module 'data_memory' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/data_memory.vhd:26' bound to instance 'data_mem' of component 'data_memory' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd:228]
+INFO: [Synth 8-638] synthesizing module 'data_memory' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/data_memory.vhd:35]
+WARNING: [Synth 8-614] signal 'reset' is read in the process but is not in the sensitivity list [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/data_memory.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'data_memory' (11#1) [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/data_memory.vhd:35]
+INFO: [Synth 8-3491] module 'mux_2to1_16b' declared at 'C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd:25' bound to instance 'mux_mem_to_reg' of component 'mux_2to1_16b' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd:236]
+INFO: [Synth 8-256] done synthesizing module 'single_cycle_core' (12#1) [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd:57]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:20 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:22 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tftg256-3
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:23 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a100tftg256-3
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:25 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   17 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 39    
+	                4 Bit    Registers := 1     
++---Muxes : 
+	   8 Input   16 Bit        Muxes := 1     
+	  16 Input    3 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 71    
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:05 ; elapsed = 00:00:47 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:05 ; elapsed = 00:00:47 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:05 ; elapsed = 00:00:47 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:06 ; elapsed = 00:00:52 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:06 ; elapsed = 00:00:52 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:06 ; elapsed = 00:00:52 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:06 ; elapsed = 00:00:52 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:52 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:06 ; elapsed = 00:00:52 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++-+-----+------+
+| |Cell |Count |
++-+-----+------+
++-+-----+------+
+
+Report Instance Areas: 
++------+---------+-------+------+
+|      |Instance |Module |Cells |
++------+---------+-------+------+
+|1     |top      |       |     0|
++------+---------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:06 ; elapsed = 00:00:52 . Memory (MB): peak = 1016.574 ; gain = 0.000
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:06 ; elapsed = 00:00:52 . Memory (MB): peak = 1016.574 ; gain = 0.000
+Synthesis Optimization Complete : Time (s): cpu = 00:00:06 ; elapsed = 00:00:52 . Memory (MB): peak = 1016.574 ; gain = 0.000
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1016.574 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1016.574 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+71 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:07 ; elapsed = 00:01:04 . Memory (MB): peak = 1016.574 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/chris/COMP3211-Assignment/COMP3211-Assignment.runs/synth_1/single_cycle_core.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file single_cycle_core_utilization_synth.rpt -pb single_cycle_core_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Apr 10 15:12:23 2023...

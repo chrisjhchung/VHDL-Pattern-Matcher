@@ -1,0 +1,18 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/adder_16b.vhd" \
+"../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/adder_4b.vhd" \
+"../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/control_unit.vhd" \
+"../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/data_memory.vhd" \
+"../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/instruction_memory.vhd" \
+"../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_16b.vhd" \
+"../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd" \
+"../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd" \
+"../../../../COMP3211-Assignment.srcs/sources_1/new/pattern_registers.vhd" \
+"../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/program_counter.vhd" \
+"../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/register_file.vhd" \
+"../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/sign_extend_4to16.vhd" \
+"../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd" \
+
+# Do not sort compile order
+nosort
