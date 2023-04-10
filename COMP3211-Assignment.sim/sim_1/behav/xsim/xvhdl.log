@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/instruction_memory.vhd" into library xil_defaultlib
-INFO: [VRFC 10-3107] analyzing entity 'instruction_memory'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core_TB_VHDL.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Single_cycle_core_TB_VHDL'

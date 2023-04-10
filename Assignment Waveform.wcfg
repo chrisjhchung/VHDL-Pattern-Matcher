@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="Single_cycle_core_TB_VHDL_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="Single_cycle_core_TB_VHDL" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="14261fs"></ZoomEndTime>
+      <Cursor1Time time="2180fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="163"></NameColumnWidth>
+      <ValueColumnWidth column_width="152"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="6" />
+   <wvobject fp_name="/Single_cycle_core_TB_VHDL/c_CLOCK_PERIOD" type="other">
+      <obj_property name="ElementShortName">c_CLOCK_PERIOD</obj_property>
+      <obj_property name="ObjectShortName">c_CLOCK_PERIOD</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Single_cycle_core_TB_VHDL/r_CLOCK" type="logic">
+      <obj_property name="ElementShortName">r_CLOCK</obj_property>
+      <obj_property name="ObjectShortName">r_CLOCK</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Single_cycle_core_TB_VHDL/r_reset" type="logic">
+      <obj_property name="ElementShortName">r_reset</obj_property>
+      <obj_property name="ObjectShortName">r_reset</obj_property>
+      <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Single_cycle_core_TB_VHDL/data_in" type="array">
+      <obj_property name="ElementShortName">data_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[7:0]</obj_property>
+      <obj_property name="Radix">ASCIIRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Single_cycle_core_TB_VHDL/string_finished" type="logic">
+      <obj_property name="ElementShortName">string_finished</obj_property>
+      <obj_property name="ObjectShortName">string_finished</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/sig_insn" type="array">
+      <obj_property name="ElementShortName">sig_insn[15:0]</obj_property>
+      <obj_property name="ObjectShortName">sig_insn[15:0]</obj_property>
+   </wvobject>
+</wave_config>
