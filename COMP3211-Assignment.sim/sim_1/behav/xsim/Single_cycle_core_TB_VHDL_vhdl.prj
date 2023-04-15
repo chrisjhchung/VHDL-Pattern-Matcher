@@ -9,9 +9,13 @@ vhdl xil_defaultlib  \
 "../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_1b.vhd" \
 "../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/mux_2to1_4b.vhd" \
 "../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/program_counter.vhd" \
-"../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/register_file.vhd" \
 "../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/sign_extend_4to16.vhd" \
 "../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core.vhd" \
+
+vhdl2008 xil_defaultlib  \
+"../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/register_file.vhd" \
+
+vhdl xil_defaultlib  \
 "../../../../../Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core_TB_VHDL.vhd" \
 
 # Do not sort compile order
