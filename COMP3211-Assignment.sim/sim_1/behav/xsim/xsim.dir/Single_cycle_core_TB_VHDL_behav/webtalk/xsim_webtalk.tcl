@@ -1,6 +1,6 @@
 webtalk_init -webtalk_dir C:/Users/chris/COMP3211-Assignment/COMP3211-Assignment.sim/sim_1/behav/xsim/xsim.dir/Single_cycle_core_TB_VHDL_behav/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Mon Apr 10 17:33:09 2023" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Sat Apr 15 12:20:03 2023" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2020.2 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "3064766" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "WIN64" -context "software_version_and_target_device"
@@ -14,7 +14,7 @@ webtalk_add_data -client project -key target_package -value "not_applicable" -co
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "e5a3d3e5-c3f9-47d4-a26a-392a0d76bf7f" -context "software_version_and_target_device"
 webtalk_add_data -client project -key project_id -value "efba8f9ac5424b599ae54aca1842b9f2" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "97" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "112" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Windows Server 2016 or Windows 10" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "major release  (build 9200)" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz" -context "user_environment"
@@ -36,7 +36,7 @@ webtalk_add_data -client xsim -key Total_Nets -value "0" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Processes -value "56" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Total_Instances -value "55" -context "xsim\\usage"
 webtalk_add_data -client xsim -key Xilinx_HDL_Libraries_Used -value "secureip " -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Time -value "0.62_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Compiler_Memory -value "64268_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 1644502995 -regid "" -xml C:/Users/chris/COMP3211-Assignment/COMP3211-Assignment.sim/sim_1/behav/xsim/xsim.dir/Single_cycle_core_TB_VHDL_behav/webtalk/usage_statistics_ext_xsim.xml -html C:/Users/chris/COMP3211-Assignment/COMP3211-Assignment.sim/sim_1/behav/xsim/xsim.dir/Single_cycle_core_TB_VHDL_behav/webtalk/usage_statistics_ext_xsim.html -wdm C:/Users/chris/COMP3211-Assignment/COMP3211-Assignment.sim/sim_1/behav/xsim/xsim.dir/Single_cycle_core_TB_VHDL_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key Compiler_Time -value "0.23_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Compiler_Memory -value "64656_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 2185857393 -regid "" -xml C:/Users/chris/COMP3211-Assignment/COMP3211-Assignment.sim/sim_1/behav/xsim/xsim.dir/Single_cycle_core_TB_VHDL_behav/webtalk/usage_statistics_ext_xsim.xml -html C:/Users/chris/COMP3211-Assignment/COMP3211-Assignment.sim/sim_1/behav/xsim/xsim.dir/Single_cycle_core_TB_VHDL_behav/webtalk/usage_statistics_ext_xsim.html -wdm C:/Users/chris/COMP3211-Assignment/COMP3211-Assignment.sim/sim_1/behav/xsim/xsim.dir/Single_cycle_core_TB_VHDL_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate

@@ -11,14 +11,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="35851fs"></ZoomEndTime>
+      <ZoomEndTime time="72101fs"></ZoomEndTime>
       <Cursor1Time time="0fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="163"></NameColumnWidth>
-      <ValueColumnWidth column_width="148"></ValueColumnWidth>
+      <ValueColumnWidth column_width="144"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="6" />
+   <WVObjectSize size="7" />
    <wvobject fp_name="/Single_cycle_core_TB_VHDL/c_CLOCK_PERIOD" type="other">
       <obj_property name="ElementShortName">c_CLOCK_PERIOD</obj_property>
       <obj_property name="ObjectShortName">c_CLOCK_PERIOD</obj_property>
@@ -43,6 +43,10 @@
       <obj_property name="Radix">ASCIIRADIX</obj_property>
       <obj_property name="CustomSignalColor">#00FFFF</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Single_cycle_core_TB_VHDL/patterns_finished" type="logic">
+      <obj_property name="ElementShortName">patterns_finished</obj_property>
+      <obj_property name="ObjectShortName">patterns_finished</obj_property>
    </wvobject>
    <wvobject fp_name="/Single_cycle_core_TB_VHDL/string_finished" type="logic">
       <obj_property name="ElementShortName">string_finished</obj_property>
