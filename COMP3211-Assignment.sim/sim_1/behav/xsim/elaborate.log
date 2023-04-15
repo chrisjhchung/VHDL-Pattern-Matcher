@@ -3,6 +3,7 @@ Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
 Running: D:/Vivado/2020.2/bin/unwrapped/win64.o/xelab.exe -wto efba8f9ac5424b599ae54aca1842b9f2 --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot Single_cycle_core_TB_VHDL_behav xil_defaultlib.Single_cycle_core_TB_VHDL -log elaborate.log 
 Using 2 slave threads.
 Starting static elaboration
+WARNING: [VRFC 10-3457] index 16 is out of array constraint 0 to 15 for target 'var_insn_mem' [C:/Users/chris/Desktop/single_cycle_core/single_cycle_core/VHDL/instruction_memory.vhd:85]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
