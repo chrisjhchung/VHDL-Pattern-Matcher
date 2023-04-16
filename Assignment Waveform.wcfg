@@ -10,13 +10,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="36301fs"></ZoomEndTime>
-      <Cursor1Time time="21400fs"></Cursor1Time>
+      <ZoomStartTime time="969583fs"></ZoomStartTime>
+      <ZoomEndTime time="1006084fs"></ZoomEndTime>
+      <Cursor1Time time="979133fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="176"></NameColumnWidth>
-      <ValueColumnWidth column_width="126"></ValueColumnWidth>
+      <ValueColumnWidth column_width="122"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="17" />
    <wvobject fp_name="/Single_cycle_core_TB_VHDL/c_CLOCK_PERIOD" type="other">
@@ -99,84 +99,147 @@
    <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/read_register_a" type="array">
       <obj_property name="ElementShortName">read_register_a[3:0]</obj_property>
       <obj_property name="ObjectShortName">read_register_a[3:0]</obj_property>
-      <obj_property name="CustomSignalColor">#800000</obj_property>
+      <obj_property name="CustomSignalColor">#808000</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/read_register_b" type="array">
       <obj_property name="ElementShortName">read_register_b[3:0]</obj_property>
       <obj_property name="ObjectShortName">read_register_b[3:0]</obj_property>
-      <obj_property name="CustomSignalColor">#800000</obj_property>
+      <obj_property name="CustomSignalColor">#808000</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
    </wvobject>
    <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/write_data" type="array">
       <obj_property name="ElementShortName">write_data[15:0]</obj_property>
       <obj_property name="ObjectShortName">write_data[15:0]</obj_property>
-      <obj_property name="CustomSignalColor">#800000</obj_property>
+      <obj_property name="CustomSignalColor">#808000</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="Radix">ASCIIRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile" type="array">
-      <obj_property name="ElementShortName">sig_regfile[0:7][0:15][15:0]</obj_property>
-      <obj_property name="ObjectShortName">sig_regfile[0:7][0:15][15:0]</obj_property>
-      <obj_property name="CustomSignalColor">#800000</obj_property>
+      <obj_property name="ElementShortName">sig_regfile[0:16][0:17][15:0]</obj_property>
+      <obj_property name="ObjectShortName">sig_regfile[0:16][0:17][15:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="Radix">ASCIIRADIX</obj_property>
       <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[0]" type="array">
-         <obj_property name="ElementShortName">[0][0:15][15:0]</obj_property>
-         <obj_property name="ObjectShortName">[0][0:15][15:0]</obj_property>
-         <obj_property name="Radix">ASCIIRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="ElementShortName">[0][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[0][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[1]" type="array">
-         <obj_property name="ElementShortName">[1][0:15][15:0]</obj_property>
-         <obj_property name="ObjectShortName">[1][0:15][15:0]</obj_property>
-         <obj_property name="Radix">ASCIIRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="ElementShortName">[1][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[1][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[2]" type="array">
-         <obj_property name="ElementShortName">[2][0:15][15:0]</obj_property>
-         <obj_property name="ObjectShortName">[2][0:15][15:0]</obj_property>
-         <obj_property name="Radix">ASCIIRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="ElementShortName">[2][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[2][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[3]" type="array">
-         <obj_property name="ElementShortName">[3][0:15][15:0]</obj_property>
-         <obj_property name="ObjectShortName">[3][0:15][15:0]</obj_property>
-         <obj_property name="Radix">ASCIIRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="ElementShortName">[3][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[3][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[4]" type="array">
-         <obj_property name="ElementShortName">[4][0:15][15:0]</obj_property>
-         <obj_property name="ObjectShortName">[4][0:15][15:0]</obj_property>
-         <obj_property name="Radix">ASCIIRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="ElementShortName">[4][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[4][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[5]" type="array">
-         <obj_property name="ElementShortName">[5][0:15][15:0]</obj_property>
-         <obj_property name="ObjectShortName">[5][0:15][15:0]</obj_property>
-         <obj_property name="Radix">ASCIIRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="ElementShortName">[5][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[5][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[6]" type="array">
-         <obj_property name="ElementShortName">[6][0:15][15:0]</obj_property>
-         <obj_property name="ObjectShortName">[6][0:15][15:0]</obj_property>
-         <obj_property name="Radix">ASCIIRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="ElementShortName">[6][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[6][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[7]" type="array">
-         <obj_property name="ElementShortName">[7][0:15][15:0]</obj_property>
-         <obj_property name="ObjectShortName">[7][0:15][15:0]</obj_property>
+         <obj_property name="ElementShortName">[7][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[7][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
          <obj_property name="Radix">ASCIIRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[8]" type="array">
+         <obj_property name="ElementShortName">[8][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[8][0:17][15:0]</obj_property>
          <obj_property name="CustomSignalColor">#800000</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[9]" type="array">
+         <obj_property name="ElementShortName">[9][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[9][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[10]" type="array">
+         <obj_property name="ElementShortName">[10][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[10][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[11]" type="array">
+         <obj_property name="ElementShortName">[11][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[11][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[12]" type="array">
+         <obj_property name="ElementShortName">[12][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[12][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[13]" type="array">
+         <obj_property name="ElementShortName">[13][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[13][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[14]" type="array">
+         <obj_property name="ElementShortName">[14][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[14][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[15]" type="array">
+         <obj_property name="ElementShortName">[15][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[15][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[16]" type="array">
+         <obj_property name="ElementShortName">[16][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[16][0:17][15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FF00FF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>
