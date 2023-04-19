@@ -7,10 +7,15 @@ use IEEE.std_logic_arith.all;
 entity reg_if_id is
     port(   IF_PC4      : in    std_logic_vector(5 downto 0);
             IF_INSN     : in    std_logic_vector(19 downto 0);
-            line_num    : in
+            IF_line_num, IF_char_idx    : in    std_logic_vector(3 downto 0);
+            IF_data_in  : in    std_logic_vector(19 downto 0);
+            IF_syscall  : in    std_logic;
             clk, rst, clear : in    std_logic;
+
             ID_PC4      : out   std_logic_vector(5 downto 0);
             ID_INSN     : out   std_logic_vector(19 downto 0);
+            EX_line_num, IF_char_idx    : in    std_logic_vector(3 downto 0);
+            EX_data_in  : in    std_logic_vector(19 downto 0);
         );
 end reg_if_id;
 
