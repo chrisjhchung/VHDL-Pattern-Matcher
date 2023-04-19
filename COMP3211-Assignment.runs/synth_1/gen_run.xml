@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tftg256-3" LaunchTime="1681103412">
-  <File Type="PA-TCL" Name="single_cycle_core.tcl"/>
-  <File Type="REPORTS-TCL" Name="single_cycle_core_reports.tcl"/>
-  <File Type="RDS-RDS" Name="single_cycle_core.vds"/>
-  <File Type="RDS-DCP" Name="single_cycle_core.dcp"/>
+<GenRun Id="synth_1" LaunchPart="xc7a100tftg256-3" LaunchTime="1681862860">
+  <File Type="PA-TCL" Name="Single_cycle_core_TB_VHDL.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="Single_cycle_core_TB_VHDL_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="Single_cycle_core_TB_VHDL_reports.tcl"/>
+  <File Type="RDS-RDS" Name="Single_cycle_core_TB_VHDL.vds"/>
+  <File Type="RDS-UTIL" Name="Single_cycle_core_TB_VHDL_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="Single_cycle_core_TB_VHDL_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="Single_cycle_core_TB_VHDL.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="Single_cycle_core_TB_VHDL_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="Single_cycle_core_TB_VHDL_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PPRDIR/../Desktop/single_cycle_core/single_cycle_core/VHDL/adder_16b.vhd">
@@ -12,7 +17,13 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../Desktop/single_cycle_core/single_cycle_core/VHDL/adder_4b.vhd">
+    <File Path="$PSRCDIR/sources_1/new/adder_6b.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/adder_signed_4b.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -54,13 +65,19 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/mux_2to1_6b.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/../Desktop/single_cycle_core/single_cycle_core/VHDL/program_counter.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../Desktop/single_cycle_core/single_cycle_core/VHDL/register_file.vhd">
+    <File Path="$PSRCDIR/sources_1/new/sign_extend_4b_to_6b.vhd">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -78,16 +95,35 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PPRDIR/../Desktop/single_cycle_core/single_cycle_core/VHDL/register_file.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/../Desktop/single_cycle_core/single_cycle_core/VHDL/single_cycle_core_TB_VHDL.vhd">
       <FileInfo>
-        <Attr Name="UserDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/comparator_16b.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/pattern_registers.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="single_cycle_core"/>
+      <Option Name="TopModule" Val="Single_cycle_core_TB_VHDL"/>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
