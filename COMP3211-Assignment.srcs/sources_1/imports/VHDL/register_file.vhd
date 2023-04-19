@@ -12,6 +12,7 @@ entity register_file is
            write_register  : in  std_logic_vector(4 downto 0);
            write_data      : in  std_logic_vector(19 downto 0);
            syscall_enable  : in  std_logic;
+           reg_load_enable : in  std_logic;
            read_data_a     : out std_logic_vector(19 downto 0);
            read_data_b     : out std_logic_vector(19 downto 0) );
 end register_file;
@@ -42,7 +43,7 @@ begin
         var_write_addr  := to_integer(unsigned(write_register));
         
         -- Initialize data:
-                if (reset = '1') then
+        if (reset = '1') then
             -- Initialize the var_regfile variable with '-' for all elements except the last two elements in each reg_row
             var_regfile := (
               others => (
@@ -70,15 +71,27 @@ begin
             
         -- Write data
         elsif (falling_edge(clk) and write_enable = '1') then
-        if instruction = "01111" or instruction = "01110" then
-            var_regfile(to_integer(unsigned(read_register_a)))
+            if instruction = "01111" or instruction = "01110" then
+                var_regfile(to_integer(unsigned(read_register_a)))
                        (to_integer(unsigned(read_register_b)))
                 := write_data;
             else
-            var_regfile(16)
-                       (to_integer(unsigned(write_register)))
+                var_regfile(16)
+                           (to_integer(unsigned(write_register)))
                 := write_data;
             end if;
+        
+        -- Load register
+        elsif (falling_edge(clk) and reg_load_enable = '1') then
+            -- Set the rt/rd mux ctrl signal to 1
+            -- read_register_a is 1st argument
+            -- read_register_b is 2nd argument
+            -- write_register is 3rd argument
+            var_regfile(16)(to_integer(unsigned(read_register_a))) 
+                := var_regfile(to_integer(unsigned(read_register_b)))(to_integer(unsigned(write_register)));
+            
+            
+            
         end if;
 
         -- Read data
