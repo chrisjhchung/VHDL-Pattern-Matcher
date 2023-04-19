@@ -115,7 +115,7 @@ component control_unit is
            alu_src         : out std_logic;
            mem_write       : out std_logic;
            mem_to_reg      : out std_logic;
-           reg_load_enable : out std_logic );
+           reg_load        : out std_logic );
 end component;
 
 component register_file is
@@ -296,7 +296,7 @@ pc : program_counter
                alu_src         => sig_alu_src,
                mem_write       => sig_mem_write,
                mem_to_reg      => sig_mem_to_reg,
-               reg_load_enable => sig_reg_load_enable );
+               reg_load        => sig_reg_load_enable );
 
     mux_reg_dst : mux_2to1_4b 
     port map ( mux_select => sig_reg_dst,

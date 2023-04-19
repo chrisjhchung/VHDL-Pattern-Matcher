@@ -50,7 +50,7 @@ entity control_unit is
            alu_src          : out std_logic;
            mem_write        : out std_logic;
            mem_to_reg       : out std_logic;
-           reg_load_enable  : out std_logic );
+           reg_load         : out std_logic );
 end control_unit;
 
 architecture behavioural of control_unit is
@@ -96,5 +96,8 @@ begin
                  
     mem_to_reg <= '0';--'1' when (opcode = OP_LOAD) else
                   --'0';
+                  
+    reg_load   <= '1' when (opcode = OP_REGLOAD) else 
+                  '0';
 
 end behavioural;

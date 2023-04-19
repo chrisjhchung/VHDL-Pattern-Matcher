@@ -33,7 +33,8 @@ begin
                             write_enable,
                             write_register,
                             write_data,
-                            syscall_enable ) is
+                            syscall_enable,
+                            reg_load_enable ) is
 
         variable var_regfile     : reg_file;
         variable var_write_addr  : integer;
@@ -86,10 +87,9 @@ begin
             -- Set the rt/rd mux ctrl signal to 1
             -- read_register_a is 1st argument
             -- read_register_b is 2nd argument
-            -- write_register is 3rd argument
-            var_regfile(16)(to_integer(unsigned(read_register_a))) 
-                := var_regfile(to_integer(unsigned(read_register_b)))(to_integer(unsigned(write_register)));
-            
+            -- write_register is 3rd argument  
+            var_regfile(to_integer(unsigned(read_register_b)))(to_integer(unsigned(write_register)))
+                := var_regfile(16)(to_integer(unsigned(read_register_a)));
             
             
         end if;
