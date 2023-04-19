@@ -15,7 +15,7 @@ entity reg_if_id is
             ID_PC4      : out   std_logic_vector(5 downto 0);
             ID_INSN     : out   std_logic_vector(19 downto 0);
             EX_line_num, IF_char_idx    : in    std_logic_vector(3 downto 0);
-            EX_data_in  : in    std_logic_vector(19 downto 0);
+            EX_data_in  : in    std_logic_vector(19 downto 0)
         );
 end reg_if_id;
 

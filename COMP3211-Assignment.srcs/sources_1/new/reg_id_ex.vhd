@@ -23,7 +23,7 @@ entity reg_id_ex is
             EX_INSN     : out   std_logic_vector(19 downto 0);
             EX_data_in  : in    std_logic_vector(19 downto 0);
             EX_reg_data_rs, EX_reg_data_rt, EX_xtnd_off : out std_logic_vector(19 downto 0);
-            EX_wreg_rs, EX_wreg_rt  : in    std_logic_vector(4 downto 0);
+            EX_wreg_rs, EX_wreg_rt  : in    std_logic_vector(4 downto 0)
         );
 end reg_id_ex;
 
