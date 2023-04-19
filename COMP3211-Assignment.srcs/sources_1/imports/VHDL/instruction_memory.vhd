@@ -109,7 +109,7 @@ begin
                 var_insn_mem(14)  := X"00000";
                 
                 -- else
-                var_insn_mem(15)  := X"00000";
+                var_insn_mem(15)  := X"38d01";
                 var_insn_mem(16)  := X"00000";
 
                 var_insn_mem(17) := X"00000";

@@ -107,14 +107,15 @@ component mux_2to1_16b is
 end component;
 
 component control_unit is
-    port ( opcode     : in  std_logic_vector(4 downto 0);
-           syscall    : out std_logic;
-           branch    : out std_logic;
-           reg_dst    : out std_logic;
-           reg_write  : out std_logic;
-           alu_src    : out std_logic;
-           mem_write  : out std_logic;
-           mem_to_reg : out std_logic );
+    port ( opcode          : in  std_logic_vector(4 downto 0);
+           syscall         : out std_logic;
+           branch          : out std_logic;
+           reg_dst         : out std_logic;
+           reg_write       : out std_logic;
+           alu_src         : out std_logic;
+           mem_write       : out std_logic;
+           mem_to_reg      : out std_logic;
+           reg_load        : out std_logic );
 end component;
 
 component register_file is
@@ -127,6 +128,7 @@ component register_file is
            write_register  : in  std_logic_vector(4 downto 0);
            write_data      : in  std_logic_vector(19 downto 0);
            syscall_enable  : in  std_logic;
+           reg_load_enable : in  std_logic;
            read_data_a     : out std_logic_vector(19 downto 0);
            read_data_b     : out std_logic_vector(19 downto 0) );
 end component;
@@ -229,6 +231,7 @@ signal sig_read_register_a      : std_logic_vector(4 downto 0);
 signal sig_read_register_b      : std_logic_vector(4 downto 0);
 
 signal sig_bne_insn_extended    : std_logic_vector(5 downto 0);
+signal sig_reg_load_enable      : std_logic;
 
 begin
 
@@ -285,14 +288,15 @@ pc : program_counter
                data_out => sig_sign_extended_offset );
 
     ctrl_unit : control_unit 
-    port map ( opcode     => sig_insn(19 downto 15),
-               syscall    => sig_syscall, 
-               branch     => sig_branch, 
-               reg_dst    => sig_reg_dst,
-               reg_write  => sig_reg_write,
-               alu_src    => sig_alu_src,
-               mem_write  => sig_mem_write,
-               mem_to_reg => sig_mem_to_reg );
+    port map ( opcode          => sig_insn(19 downto 15),
+               syscall         => sig_syscall, 
+               branch          => sig_branch, 
+               reg_dst         => sig_reg_dst,
+               reg_write       => sig_reg_write,
+               alu_src         => sig_alu_src,
+               mem_write       => sig_mem_write,
+               mem_to_reg      => sig_mem_to_reg,
+               reg_load        => sig_reg_load_enable );
 
     mux_reg_dst : mux_2to1_4b 
     port map ( mux_select => sig_reg_dst,
@@ -326,6 +330,7 @@ pc : program_counter
                write_register  => sig_write_register,
                write_data      => sig_write_data,
                syscall_enable  => sig_syscall, 
+               reg_load_enable => sig_reg_load_enable,
                read_data_a     => sig_read_data_a,
                read_data_b     => sig_read_data_b );
     

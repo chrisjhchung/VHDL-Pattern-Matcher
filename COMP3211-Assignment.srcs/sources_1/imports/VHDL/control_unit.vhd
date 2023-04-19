@@ -42,27 +42,29 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity control_unit is
-    port ( opcode     : in  std_logic_vector(4 downto 0);
-           syscall    : out std_logic;
-           branch     : out std_logic;
-           reg_dst    : out std_logic;
-           reg_write  : out std_logic;
-           alu_src    : out std_logic;
-           mem_write  : out std_logic;
-           mem_to_reg : out std_logic );
+    port ( opcode           : in  std_logic_vector(4 downto 0);
+           syscall          : out std_logic;
+           branch           : out std_logic;
+           reg_dst          : out std_logic;
+           reg_write        : out std_logic;
+           alu_src          : out std_logic;
+           mem_write        : out std_logic;
+           mem_to_reg       : out std_logic;
+           reg_load         : out std_logic );
 end control_unit;
 
 architecture behavioural of control_unit is
 
-constant OP_LOAD  : std_logic_vector(4 downto 0) := "00001";
-constant OP_STORE : std_logic_vector(4 downto 0) := "00011";
-constant OP_ADD   : std_logic_vector(4 downto 0) := "01000";
+constant OP_LOAD    : std_logic_vector(4 downto 0) := "00001";
+constant OP_STORE   : std_logic_vector(4 downto 0) := "00011";
+constant OP_ADD     : std_logic_vector(4 downto 0) := "01000";
 
 -- Opcode for system call to read from input
 constant OP_SYSCALL  : std_logic_vector(4 downto 0) := "01111";
 constant OP_LOADI    : std_logic_vector(4 downto 0) := "00010";
 constant OP_BNE      : std_logic_vector(4 downto 0) := "00101";
 constant OP_ADDI     : std_logic_vector(4 downto 0) := "00110";
+constant OP_REGLOAD  : std_logic_vector(4 downto 0) := "00111";
 
 
 begin
@@ -72,7 +74,8 @@ begin
     branch  <= '1' when opcode = OP_SYSCALL else '0';
 
     reg_dst    <= '1' when (opcode = OP_ADD
-                                or opcode = OP_LOAD) else
+                            or opcode = OP_LOAD
+                            or opcode = OP_REGLOAD) else
                   '0';
 
     reg_write  <= '1' when (opcode = OP_ADD 
@@ -83,8 +86,8 @@ begin
                   '0';
     
     alu_src    <= '1' when (opcode = OP_LOADI
-                           or opcode = OP_STORE
-                           or opcode = OP_ADDI
+                            or opcode = OP_STORE
+                            or opcode = OP_ADDI
                             or opcode = OP_SYSCALL) else
                   '0';
                  
@@ -93,5 +96,8 @@ begin
                  
     mem_to_reg <= '0';--'1' when (opcode = OP_LOAD) else
                   --'0';
+                  
+    reg_load   <= '1' when (opcode = OP_REGLOAD) else 
+                  '0';
 
 end behavioural;
