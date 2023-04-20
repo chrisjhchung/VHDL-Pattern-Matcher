@@ -175,6 +175,76 @@ component data_memory is
            data_out     : out std_logic_vector(19 downto 0) );
 end component;
 
+component reg_if_id is
+    port(   IF_PC4      : in    std_logic_vector(5 downto 0);
+            IF_INSN     : in    std_logic_vector(19 downto 0);
+            IF_line_num, IF_char_idx    : in    std_logic_vector(3 downto 0);
+            IF_data_in, IF_sig_flag     : in    std_logic_vector(19 downto 0);
+            IF_syscall  : in    std_logic;
+            clk, rst, clear : in    std_logic;
+
+            ID_PC4      : out   std_logic_vector(5 downto 0);
+            ID_INSN     : out   std_logic_vector(19 downto 0);
+            ID_line_num, ID_char_idx    : in    std_logic_vector(3 downto 0);
+            ID_data_in, ID_sig_flag     : in    std_logic_vector(19 downto 0);
+            ID_syscall  : in    std_logic;
+        );
+end component;
+
+
+component reg_id_ex is
+    port(   ID_PC4      : in    std_logic_vector(5 downto 0);
+            ID_INSN     : in    std_logic_vector(19 downto 0);
+            ID_data_in  : in    std_logic_vector(19 downto 0);
+            ID_mem_to_reg, ID_reg_write, ID_mem_write : in std_logic;
+            ID_ALUsrc, ID_reg_dst, ID_branch : in std_logic;
+            ID_syscall  : in std_logic;
+            -- ID_write_data   : in    std_logic_vector(19 downto 0);
+            ID_reg_data_rs, ID_reg_data_rt, ID_syscall_data_rt, ID_xtnd_off : in std_logic_vector(19 downto 0);
+            ID_wreg_rs, ID_wreg_rt, ID_syscall_addr : in    std_logic_vector(4 downto 0);
+            clk, rst, clear : in    std_logic;
+
+            EX_mem_to_reg, EX_reg_write, EX_mem_write : out std_logic;
+            EX_ALUsrc, EX_reg_dst, EX_branch : out std_logic;
+            EX_syscall  : out std_logic;
+            EX_PC4      : out   std_logic_vector(5 downto 0);
+            EX_INSN     : out   std_logic_vector(19 downto 0);
+            EX_data_in  : in    std_logic_vector(19 downto 0);
+            EX_reg_data_rs, EX_reg_data_rt, EX_syscall_data_rt, EX_xtnd_off : out std_logic_vector(19 downto 0);
+            EX_wreg_rs, EX_wreg_rt, EX_syscall_addr : in    std_logic_vector(4 downto 0)
+        );
+end component;
+
+component reg_ex_mem is
+    port(   EX_Mem_To_Reg, EX_Reg_Write, EX_Mem_Write   : in std_logic;
+            EX_carry_out, EX_syscall    : in std_logic;
+            EX_aluop_result, EX_reg_data_rt : in std_logic_vector(19 downto 0);
+            EX_data_in                  : in std_logic_vector(19 downto 0);
+            EX_wreg_addr                : in std_logic_vector(4 downto 0);
+            EX_mem_addr                 : in std_logic_vector(4 downto 0);
+            clk, reset, clear           : in std_logic;
+
+            MEM_Mem_To_Reg, MEM_Reg_Write, MEM_Mem_Write    : out std_logic;
+            MEM_carry_out, MEM_syscall  : out std_logic;
+            MEM_aluop_result, MEM_reg_data_rt   : out std_logic_vector(19 downto 0);
+            MEM_data_in                 : out std_logic_vector(19 downto 0);
+            MEM_wreg_addr               : out std_logic_vector(4 downto 0)
+            MEM_mem_addr                : out std_logic_vector(4 downto 0);
+        );
+end component;
+
+component reg_mem_wb is
+    port(   MEM_Mem_To_Reg, MEM_Reg_Write   : in std_logic;
+            MEM_memory_data, MEM_aluop_result   : in std_logic_vector(19 downto 0);
+            MEM_wreg_addr       : in std_logic_vector(4 downto 0);
+            clk, reset          : in std_logic;
+
+            wb_Mem_To_Reg, wb_Reg_Write, wb_rs_plus     : out std_logic;
+            wb_memory_data, wb_aluop_result     : out std_logic_vector(19 downto 0);
+            wb_wreg_addr        : out std_logic_vector(4 downto 0)
+        );
+end component;
+
 --component patterns_register is
 --        port (
 --            clk        : in std_logic;
@@ -230,12 +300,43 @@ signal sig_read_register_b      : std_logic_vector(4 downto 0);
 
 signal sig_bne_insn_extended    : std_logic_vector(5 downto 0);
 
+-- pipeline signals begin
+-- ID stage
+signal sig_ID_PC4   : std_logic_vector(5 downto 0);
+signal sig_ID_INSN, sig_ID_data_in, sig_ID_sig_flag : std_logic_vector(19 downto 0);
+signal sig_ID_line_num, sig_ID_char_idx : std_logic_vector(3 downto 0);
+signal sig_ID_syscall : std_logic; 
+-- EX stage
+signal sig_EX_mem_to_reg, sig_EX_reg_write, sig_EX_mem_write : std_logic;
+signal sig_EX_ALUsrc, sig_EX_reg_dst, sig_EX_branch    : std_logic;
+signal sig_EX_syscall   : std_logic;
+signal sig_EX_PC4   : std_logic_vector(5 downto 0);
+signal sig_EX_INSN, sig_EX_data_in  : std_logic_vector(19 downto 0);
+signal sig_EX_read_data_a, sig_EX_read_data_b, sig_EX_syscall_read_data_b, sig_EX_xtnd_off  : std_logic_vector(19 downto 0);
+signal sig_EX_wreg_a, sig_EX_wreg_b, sig_EX_syscall_addr    : std_logic_vector(4 downto 0);
+-- MEM stage
+signal sig_MEM_mem_to_reg, sig_MEM_reg_write, sig_MEM_mem_write : std_logic;
+signal sig_MEM_branch, sig_MEM_carry_out, sig_MEM_syscall   : std_logic;
+signal sig_MEM_aluop_result, sig_MEM_read_data_b, sig_MEM_data_in : std_logic_vector(19 downto 0);
+signal sig_MEM_wreg_addr, sig_MEM_data_mem_addr : std_logic_vector(4 downto 0);
+-- WB stage
+signal sig_wb_mem_to_reg, sig_wb_reg_write  : std_logic;
+signal sig_wb_memory_data, sig_wb_sys_add_mux  : std_logic_vector(19 downto 0);
+signal sig_wb_wreg_addr : std_logic_vector(4 downto 0);
+
+-- pipeline signals end
+
+-- forwarding signals
+signal EXMEM_fwdA, EXMEM_fwdB, MEMWB_fwdA, MEMWB_fwdB   : std_logic;
+signal clear : std_logic;
+
+
 begin
 
     sig_one_6b <= "000001";
     syscall <= sig_syscall;
     
-pc : program_counter
+    pc : program_counter
     port map ( reset    => reset,
                clk      => clk,
                addr_in  => sig_next_pc,
@@ -256,8 +357,9 @@ pc : program_counter
                src_b     => sig_next_temp,
                sum       => sig_next_bne,   
                carry_out => sig_pc_carry_out );
-         
-    bne_comparator <=  '1' when (not(sig_read_data_a = sig_flag) and (sig_insn(19 downto 15) = "00100")) 
+    
+    -- branch here
+    bne_comparator <=  '1' when (not(sig_read_data_a = sig_IF_sig_flag) and (sig_insn(19 downto 15) = "00100")) 
                             or (not(sig_read_data_a = sig_read_data_b) and (sig_insn(19 downto 15) = "00101"))
                             else '0';
                             
@@ -266,27 +368,75 @@ pc : program_counter
                data_a     => sig_next_temp,
                data_b     => sig_next_bne,
                data_out   => sig_next_pc );
-               
+
 --    hold_instruction: entity work.mux_2to1_4b
 --    port map ( mux_select => process_start,
 --               data_a => sig_curr_pc,
 --               data_b => sig_next_pc_hold,
 --               data_out => sig_next_pc
 --    );
-    
+
+
+    -- data hazard detection starts
+    -- forwarding control
+    EXMEM_fwdA <= '1' when (sig_MEM_reg_write = '1'
+                      and sig_MEM_wreg_addr /= "00000"
+                      and sig_ID_INSN(4 downto 0) = sig_MEM_wreg_addr)
+                      else '0';
+    EXMEM_fwdB <= '1' when (sig_MEM_reg_write = '1'
+                      and sig_MEM_wreg_addr /= "00000"
+                      and sig_ID_INSN(9 downto 5) = sig_MEM_wreg_addr)
+                      else '0';
+    MEMWB_fwdA <= '1' when (sig_wb_reg_write = '1'
+                      and sig_wb_wreg_addr /= "00000"
+                      and sig_ID_INSN(4 downto 0) = sig_wb_wreg_addr)
+                      else '0';
+    MEMWB_fwdB <= '1' when (sig_wb_reg_write = '1'
+                      and sig_wb_wreg_addr /= "00000"
+                      and sig_ID_INSN(9 downto 5) = sig_wb_wreg_addr)
+                      else '0';
+
+    -- pipeline forwarding
+    sig_EX_read_data_a <= sig_MEM_aluop_result when EXMEM_fwdA = '1' else sig_EX_read_data_a;
+    sig_EX_read_data_b <= sig_MEM_aluop_result when EXMEM_fwdB = '1' else sig_EX_read_data_b;
+    sig_EX_read_data_a <= sig_write_data when MEMWB_fwdA = '1' else sig_EX_read_data_a;
+    sig_EX_read_data_a <= sig_write_data when MEMWB_fwdB = '1' else sig_EX_read_data_a;
+
+    -- end data hazard detection
     insn_mem : instruction_memory 
     port map ( reset    => reset,
                clk      => clk,
                addr_in  => sig_curr_pc,
                insn_out => sig_insn );
 
+    -- IF/ID
+    IF_ID : reg_if_id
+    port map (IF_PC4 => sig_curr_pc,
+              IF_INSN => sig_insn,
+              IF_line_num => line_number_in,
+              IF_char_idx => character_index,
+              IF_data_in => data_in,
+              IF_sig_flag => sig_flag,
+              IF_syscall => sig_syscall
+              clk => clk,
+              rst => reset,
+              clear => clear,
+              ID_PC4 => sig_ID_PC4,
+              ID_INSN => sig_ID_INSN,
+              ID_line_num => sig_ID_line_num,
+              ID_char_idx => sig_ID_char_idx,
+              ID_data_in => sig_ID_data_in,
+              ID_sig_flag => sig_ID_sig_flag,
+              ID_syscall => sig_ID_syscall );
+    -- ========
+    
     sign_extend : sign_extend_4to16 
-    port map ( data_in  => sig_insn(4 downto 0),
+    port map ( data_in  => sig_ID_INSN(4 downto 0),
                data_out => sig_sign_extended_offset );
 
     ctrl_unit : control_unit 
-    port map ( opcode     => sig_insn(19 downto 15),
-               syscall    => sig_syscall, 
+    port map ( opcode     => sig_ID_INSN(19 downto 15),
+               syscall    => sig_ID_syscall, 
                branch     => sig_branch, 
                reg_dst    => sig_reg_dst,
                reg_write  => sig_reg_write,
@@ -294,41 +444,86 @@ pc : program_counter
                mem_write  => sig_mem_write,
                mem_to_reg => sig_mem_to_reg );
 
-    mux_reg_dst : mux_2to1_4b 
-    port map ( mux_select => sig_reg_dst,
-               data_a     => sig_insn(9 downto 5),
-               data_b     => sig_insn(4 downto 0),
-               data_out   => sig_write_register );
 
     -- If it's a syscall, then the location in register 
     -- Comes from the testbench, so need a mux
     -- for the read_register_a and read_register_b
     
     mux_reg_read_a : mux_2to1_4b 
-    port map ( mux_select => sig_syscall,
-               data_a     => sig_insn(14 downto 10),
-               data_b     => line_number_in,
+    port map ( mux_select => sig_ID_syscall,
+               data_a     => sig_ID_INSN(14 downto 10),
+               data_b     => sig_ID_line_num,
                data_out   => sig_read_register_a );
                
     mux_reg_read_b : mux_2to1_4b 
-    port map ( mux_select => sig_syscall,
-               data_a     => sig_insn(9 downto 5),
-               data_b     => character_index,
+    port map ( mux_select => sig_ID_syscall,
+               data_a     => sig_ID_INSN(9 downto 5),
+               data_b     => sig_ID_char_idx,
                data_out   => sig_read_register_b );
-               
+
+    -- replace write_data and write_reg with WB pipe-back
     reg_file : register_file 
     port map ( reset           => reset, 
                clk             => clk,
-               instruction     => sig_insn(19 downto 15),
+               instruction     => sig_ID_INSN(19 downto 15),
                read_register_a => sig_read_register_a,
                read_register_b => sig_read_register_b,
                write_enable    => sig_reg_write,
                write_register  => sig_write_register,
                write_data      => sig_write_data,
-               syscall_enable  => sig_syscall, 
+               syscall_enable  => sig_ID_syscall, 
                read_data_a     => sig_read_data_a,
                read_data_b     => sig_read_data_b );
     
+    -- These two muxes are used to help syscalls
+    -- After a character is read in we need to write whether the pattern is done reading
+    -- to memory for the branch instruction
+    mux_syscall_mem : mux_2to1_16b 
+    port map ( mux_select => sig_ID_syscall,
+               data_a     => sig_read_data_b,
+               data_b     => sig_ID_sig_flag,
+               data_out   => sig_syscall_read_data_b );
+    
+    -- ID/EX
+    ID_EX : reg_id_ex
+    port map (ID_data_in => sig_ID_data_in,
+              ID_mem_to_reg => sig_mem_to_reg,
+              ID_reg_write => sig_reg_write,
+              ID_mem_write => sig_mem_write,
+              ID_ALUsrc => sig_alu_src,
+              ID_reg_dst => sig_reg_dst,
+              ID_branch => sig_branch,
+              ID_syscall => sig_ID_syscall,
+              ID_reg_data_rs => sig_read_data_a,
+              ID_reg_data_rt => sig_read_data_b,
+              ID_syscall_data_rt => sig_syscall_read_data_b,
+              ID_xtnd_off => sig_sign_extended_offset,
+              ID_wreg_rt => sig_read_register_b,
+              ID_wreg_rd => sig_ID_INSN(4 downto 0),
+              ID_syscall_addr => sig_ID_INSN(14 downto 0),
+
+              clk => clk,
+              rst => reset,
+              clear => clear,
+
+              EX_mem_to_reg => sig_EX_mem_to_reg,
+              EX_reg_write => sig_EX_reg_write,
+              EX_mem_write => sig_EX_mem_write,
+              EX_ALUsrc => sig_EX_ALUsrc,
+              EX_reg_dst => sig_EX_reg_dst,
+              EX_branch => sig_EX_branch,
+              EX_syscall => sig_EX_syscall,
+              EX_data_in => sig_EX_data_in,
+              EX_reg_data_rs => sig_EX_read_data_a,
+              EX_reg_data_rt => sig_EX_read_data_b,
+              EX_syscall_data_rt => sig_EX_syscall_read_data_b,
+              EX_xtnd_off => sig_EX_xtnd_off,
+              EX_wreg_rt => sig_EX_wreg_a,
+              EX_wreg_rd => sig_EX_wreg_b,
+              EX_syscall_addr => sig_EX_syscall_addr );
+    -- ========
+
+
     mux_alu_src : mux_2to1_16b 
     port map ( mux_select => sig_alu_src,
                data_a     => sig_read_data_b,
@@ -341,20 +536,51 @@ pc : program_counter
                sum       => sig_alu_result,
                carry_out => sig_alu_carry_out );
 
-    -- These two muxes are used to help syscalls
-    -- After a character is read in we need to write whether the pattern is done reading
-    -- to memory for the branch instruction
-    mux_syscall_mem : mux_2to1_16b 
-    port map ( mux_select => sig_syscall,
-               data_a     => sig_read_data_b,
-               data_b     => sig_flag,
-               data_out   => sig_syscall_read_data_b );
-               
+    -- note: replace instruction bit pos with ex_wreg_a/b
+    mux_reg_dst : mux_2to1_4b 
+    port map ( mux_select => sig_reg_dst,
+               data_a     => sig_ID_INSN(9 downto 5),
+               data_b     => sig_ID_INSN(4 downto 0),
+               data_out   => sig_write_register );
+    
+    -- note: replace syscall bit pos with ex_syscall_addr
     mux_syscall_mem_address : mux_2to1_4b 
-    port map ( mux_select => sig_syscall,
+    port map ( mux_select => sig_ID_syscall,
                data_a     => sig_alu_result(4 downto 0),
-               data_b     => sig_insn(14 downto 10),
+               data_b     => sig_ID_INSN(14 downto 10),
                data_out   => data_memory_address );
+
+
+    -- EX/MEM
+    EX_MEM : reg_ex_mem
+    port map (EX_Mem_To_Reg => sig_EX_mem_to_reg,
+              EX_Reg_Write => sig_EX_reg_write,
+              EX_Mem_Write => sig_EX_mem_write,
+              EX_carry_out => sig_alu_carry_out,
+              EX_syscall => sig_EX_syscall,
+              EX_aluop_result => sig_alu_result,
+              EX_reg_data_rt => sig_EX_syscall_read_data_b,
+              EX_data_in => sig_EX_data_in,
+              EX_wreg_addr => sig_write_register,
+              EX_mem_addr => data_memory_address,
+
+              clk => clk,
+              rst => reset,
+              clear => clear,
+
+              MEM_Mem_To_Reg => sig_MEM_mem_to_reg,
+              MEM_Reg_Write => sig_MEM_reg_write,
+              MEM_Mem_Write => sig_MEM_mem_write,
+              MEM_carry_out => sig_MEM_carry_out,
+              MEM_syscall => sig_MEM_syscall,
+              MEM_aluop_result => sig_MEM_aluop_result,
+              MEM_reg_data_rt => sig_syscall_read_data_b,
+              MEM_data_in => sig_MEM_data_in,
+              MEM_wreg_addr => sig_MEM_wreg_addr,
+              MEM_mem_addr => sig_MEM_data_mem_addr,
+            );
+    -- ========
+
 
     data_mem : data_memory 
     port map ( reset        => reset,
@@ -366,17 +592,37 @@ pc : program_counter
     
     -- syscall mux (Controlled by syscall op code)
     mux_add_to_mux : mux_2to1_16b
-     port map ( mux_select => sig_syscall,
+     port map ( mux_select => sig_ID_syscall,
                data_a     => sig_alu_result,
-               data_b     => data_in,
+               data_b     => sig_ID_data_in,
                data_out   => sig_sys_add_mux );
-    
-    mux_mem_to_reg : mux_2to1_16b 
+
+
+    -- EX/MEM
+    MEM_WB : reg_mem_wb
+    port map (MEM_Mem_To_Reg => sig_MEM_mem_to_reg,
+              MEM_Reg_Write => sig_MEM_reg_write,
+              MEM_memory_data => sig_data_mem_out,
+              MEM_aluop_result => sig_sys_add_mux,
+              MEM_wreg_addr => sig_MEM_wreg_addr,
+
+              clk => clk,
+              rst => reset,
+
+              wb_Mem_To_Reg => sig_wb_mem_to_reg,
+              wb_Reg_Write => sig_wb_reg_write,
+              wb_memory_data => sig_wb_memory_data,
+              wb_aluop_result => sig_wb_sys_add_mux,
+              wb_wreg_addr => sig_wb_wreg_addr,
+            );
+    -- ========
+
+
+    mux_mem_to_reg : mux_2to1_16b
     port map ( mux_select => sig_mem_to_reg,
                data_a     => sig_sys_add_mux,
                data_b     => sig_data_mem_out,
                data_out   => sig_write_data );
-
 
 --    PATTERN_REG: patterns_register
 --        port map (
