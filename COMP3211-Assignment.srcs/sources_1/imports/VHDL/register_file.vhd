@@ -59,12 +59,30 @@ begin
                 if j = 16 and i <=7 then
                   var_regfile(i)(j) := X"00001";
                 end if;
+                -- number of patterns check
+                if j = 11 and i = 16 then
+                  var_regfile(i)(j) := X"00008";
+                end if;
+                --12 is for k
+                -- pattern finished check
                 if j = 13 and i = 16 then
                   var_regfile(i)(j) := X"00001";
                 end if;
+                -- string finished check
                 if j = 14 and i = 16 then
                   var_regfile(i)(j) := X"00002";
                 end if;
+                -- 15 is for zero
+                -- question mark
+                if j = 16 and i = 16 then
+                  var_regfile(i)(j) := X"0006f";
+                end if;-- dash
+                if j = 17 and i = 16 then
+                  var_regfile(i)(j) := X"0002D";
+                end if;
+                if j=0 and i=16 then
+                  var_regfile(i)(j) := X"00008";
+                  end if;
               end loop;
             end loop;
             
@@ -74,7 +92,15 @@ begin
             var_regfile(to_integer(unsigned(read_register_a)))
                        (to_integer(unsigned(read_register_b)))
                 := write_data;
-            else
+        elsif instruction = "00111" then
+            var_regfile(to_integer(unsigned(var_regfile(16)(to_integer(unsigned(read_register_a))))))
+                                     (to_integer(unsigned(var_regfile(16)(to_integer(unsigned(read_register_b))))))
+                := var_regfile(16)(var_write_addr);
+        elsif instruction = "01000" then
+            var_regfile(16)(to_integer(unsigned(write_register))) := 
+            var_regfile(to_integer(unsigned(var_regfile(16)(to_integer(unsigned(read_register_a))))))
+                                     (to_integer(unsigned(var_regfile(16)(to_integer(unsigned(read_register_b))))));
+        else
             var_regfile(16)
                        (to_integer(unsigned(write_register)))
                 := write_data;
