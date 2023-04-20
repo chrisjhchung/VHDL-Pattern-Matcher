@@ -10,15 +10,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="970750fs"></ZoomStartTime>
-      <ZoomEndTime time="1005851fs"></ZoomEndTime>
-      <Cursor1Time time="1000000fs"></Cursor1Time>
+      <ZoomStartTime time="69360fs"></ZoomStartTime>
+      <ZoomEndTime time="104461fs"></ZoomEndTime>
+      <Cursor1Time time="70160fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="208"></NameColumnWidth>
       <ValueColumnWidth column_width="118"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="15" />
+   <WVObjectSize size="18" />
    <wvobject fp_name="group161" type="group">
       <obj_property name="label">Testbanch Signals</obj_property>
       <obj_property name="DisplayName">label</obj_property>
@@ -50,14 +50,15 @@
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="ElementShortName">sig_next_pc[5:0]</obj_property>
          <obj_property name="ObjectShortName">sig_next_pc[5:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          <obj_property name="label">Next Inst #</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/sig_curr_pc" type="array">
          <obj_property name="DisplayName">label</obj_property>
          <obj_property name="ElementShortName">sig_curr_pc[5:0]</obj_property>
          <obj_property name="ObjectShortName">sig_curr_pc[5:0]</obj_property>
          <obj_property name="label">Current Inst #</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/bne_comparator" type="logic">
          <obj_property name="DisplayName">label</obj_property>
@@ -168,6 +169,14 @@
          <obj_property name="CustomSignalColor">#FFD700</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/write_enable" type="logic">
+         <obj_property name="ElementShortName">write_enable</obj_property>
+         <obj_property name="ObjectShortName">write_enable</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/write_data" type="array">
+         <obj_property name="ElementShortName">write_data[15:0]</obj_property>
+         <obj_property name="ObjectShortName">write_data[15:0]</obj_property>
+      </wvobject>
       <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/write_register" type="array">
          <obj_property name="ElementShortName">write_register[3:0]</obj_property>
          <obj_property name="ObjectShortName">write_register[3:0]</obj_property>
@@ -179,10 +188,21 @@
       <obj_property name="ElementShortName">addr_in[3:0]</obj_property>
       <obj_property name="ObjectShortName">addr_in[3:0]</obj_property>
    </wvobject>
+   <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/alu_adder/src_a" type="array">
+      <obj_property name="ElementShortName">src_a[15:0]</obj_property>
+      <obj_property name="ObjectShortName">src_a[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/alu_adder/src_b" type="array">
+      <obj_property name="ElementShortName">src_b[15:0]</obj_property>
+      <obj_property name="ObjectShortName">src_b[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/alu_adder/sum" type="array">
+      <obj_property name="ElementShortName">sum[15:0]</obj_property>
+      <obj_property name="ObjectShortName">sum[15:0]</obj_property>
+   </wvobject>
    <wvobject fp_name="group158" type="group">
       <obj_property name="label">Read data B</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/character_index" type="array">
          <obj_property name="ElementShortName">character_index[3:0]</obj_property>
          <obj_property name="ObjectShortName">character_index[3:0]</obj_property>
@@ -209,7 +229,6 @@
    <wvobject fp_name="group157" type="group">
       <obj_property name="label">Read data A</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/mux_reg_read_a/data_a" type="array">
          <obj_property name="ElementShortName">data_a[3:0]</obj_property>
          <obj_property name="ObjectShortName">data_a[3:0]</obj_property>
@@ -300,6 +319,83 @@
       <obj_property name="UseCustomSignalColor">true</obj_property>
       <obj_property name="Radix">ASCIIRADIX</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[0]" type="array">
+         <obj_property name="ElementShortName">[0][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[0][0:17][15:0]</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[1]" type="array">
+         <obj_property name="ElementShortName">[1][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[1][0:17][15:0]</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[2]" type="array">
+         <obj_property name="ElementShortName">[2][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[2][0:17][15:0]</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[3]" type="array">
+         <obj_property name="ElementShortName">[3][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[3][0:17][15:0]</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[4]" type="array">
+         <obj_property name="ElementShortName">[4][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[4][0:17][15:0]</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[5]" type="array">
+         <obj_property name="ElementShortName">[5][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[5][0:17][15:0]</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[6]" type="array">
+         <obj_property name="ElementShortName">[6][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[6][0:17][15:0]</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[7]" type="array">
+         <obj_property name="ElementShortName">[7][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[7][0:17][15:0]</obj_property>
+         <obj_property name="Radix">ASCIIRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[8]" type="array">
+         <obj_property name="ElementShortName">[8][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[8][0:17][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[9]" type="array">
+         <obj_property name="ElementShortName">[9][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[9][0:17][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[10]" type="array">
+         <obj_property name="ElementShortName">[10][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[10][0:17][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[11]" type="array">
+         <obj_property name="ElementShortName">[11][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[11][0:17][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[12]" type="array">
+         <obj_property name="ElementShortName">[12][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[12][0:17][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[13]" type="array">
+         <obj_property name="ElementShortName">[13][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[13][0:17][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[14]" type="array">
+         <obj_property name="ElementShortName">[14][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[14][0:17][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[15]" type="array">
+         <obj_property name="ElementShortName">[15][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[15][0:17][15:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/Single_cycle_core_TB_VHDL/UUT/reg_file/sig_regfile[16]" type="array">
+         <obj_property name="ElementShortName">[16][0:17][15:0]</obj_property>
+         <obj_property name="ObjectShortName">[16][0:17][15:0]</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+      </wvobject>
    </wvobject>
    <wvobject type="divider" fp_name="divider164">
       <obj_property name="label">Memory</obj_property>
