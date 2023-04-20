@@ -187,7 +187,7 @@ component reg_if_id is
             ID_INSN     : out   std_logic_vector(19 downto 0);
             ID_line_num, ID_char_idx    : in    std_logic_vector(3 downto 0);
             ID_data_in, ID_sig_flag     : in    std_logic_vector(19 downto 0);
-            ID_syscall  : in    std_logic;
+            ID_syscall  : in    std_logic
         );
 end component;
 
@@ -228,8 +228,8 @@ component reg_ex_mem is
             MEM_carry_out, MEM_syscall  : out std_logic;
             MEM_aluop_result, MEM_reg_data_rt   : out std_logic_vector(19 downto 0);
             MEM_data_in                 : out std_logic_vector(19 downto 0);
-            MEM_wreg_addr               : out std_logic_vector(4 downto 0)
-            MEM_mem_addr                : out std_logic_vector(4 downto 0);
+            MEM_wreg_addr               : out std_logic_vector(4 downto 0);
+            MEM_mem_addr                : out std_logic_vector(4 downto 0)
         );
 end component;
 
@@ -577,7 +577,7 @@ begin
               MEM_reg_data_rt => sig_syscall_read_data_b,
               MEM_data_in => sig_MEM_data_in,
               MEM_wreg_addr => sig_MEM_wreg_addr,
-              MEM_mem_addr => sig_MEM_data_mem_addr,
+              MEM_mem_addr => sig_MEM_data_mem_addr
             );
     -- ========
 
@@ -613,7 +613,7 @@ begin
               wb_Reg_Write => sig_wb_reg_write,
               wb_memory_data => sig_wb_memory_data,
               wb_aluop_result => sig_wb_sys_add_mux,
-              wb_wreg_addr => sig_wb_wreg_addr,
+              wb_wreg_addr => sig_wb_wreg_addr
             );
     -- ========
 
