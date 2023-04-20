@@ -81,51 +81,99 @@ begin
                     -- (This is a special branch - it'll also branch if equal to '?')
                     -- (This is a bit of a limitation, but we can just chain a bunch of these if we need to do big jumps)
                 -- 6XXX = ADDI <register> <register destination> <immediate>
-                
+                -- 7XXX = LA <array index (from register)> <element index (from register)> <register value to store)> 
+                -- 8XXX = SA <array index (from register)> <element index (from register)> <register to store to)>
                 -- We'll store k in $0, i in $1, j in $2
                 -- initialise $0 with 0 and $1 with i (representing i and j respectively)
                 var_insn_mem(3)  := X"10020";  
                 var_insn_mem(4)  := X"10041";
                 
-                -- load value from register[$0][$1] into $3
-                var_insn_mem(5)  := X"08023";
-                -- load value from register[$0][$2] into $4
-                var_insn_mem(6)  := X"08044";
+              
+                
+                -- check to see if end of pattern:
+                -- if so jump 14
+                var_insn_mem(5)  := X"29221";
+                var_insn_mem(6)  := X"2b00f";
+                
+                -- load value from register[$12][$1] into $3
+                var_insn_mem(7)  := X"43023";
+                -- load value from register[$12][$2] into $4
+                var_insn_mem(8)  := X"43044";
+                  
+                ------------------------------------------------------------
+                 -- bne pattern[i] === '?'
+                 -- branches 1
+                var_insn_mem(9)  := X"28e05";
+                
+                -- if bne is ==="?"
+                
+                -- add 1 to i and j
+                var_insn_mem(10)  := X"30421";
+                var_insn_mem(11)  := X"30841";
+                
+                -- store table[i] in $5
+                var_insn_mem(12)  := X"40025";
+                -- store $5 in table[k][j]
+                var_insn_mem(13)  := X"43065";
+                 
+                -- jump back to instruction 7
+                var_insn_mem(14)  := X"2bdd6";
+
+                ------------------------------------------------------------
+                
+                
+                ------------------------------------------------------------
                 -- compare $3 and $4, branch 4 if not equal
-                var_insn_mem(7)  := X"28c84";
+                var_insn_mem(15)  := X"28c84";
                 
                 -- if pattern[i] === pattern[j] || pattern[j] === '?'
-                var_insn_mem(8)  := X"00000";
-                var_insn_mem(9)  := X"00000";
-                var_insn_mem(10)  := X"00000";
-                var_insn_mem(11)  := X"00000";
-             
+                -- add 1 to i and j
+                var_insn_mem(16)  := X"30421";
+                var_insn_mem(17)  := X"30841";
+                -- stpre i into table[j]
+                --problem
+                var_insn_mem(18)  := X"38041";
+                
+                -- jump back to instruction -5
+                var_insn_mem(19)  := X"2bdda";
+
+                ------------------------------------------------------------
+
+                ------------------------------------------------------------
                 -- if i==0
                 -- branch if $1 is not equal to 0 (register index 16 will be reserved for 0)
-                var_insn_mem(12)  := X"285e2";
-                -- Add 1 to j ($2)
-                var_insn_mem(13)  := X"30841";
-                -- set table[j] = 0
-                var_insn_mem(14)  := X"00000";
                 
-                -- else
-                var_insn_mem(15)  := X"00000";
-                var_insn_mem(16)  := X"00000";
+                var_insn_mem(20)  := X"285e5";
+                -- Add 1 to j ($2)
+                var_insn_mem(21)  := X"30841";
+                -- set table[j] = 0
+                var_insn_mem(22)  := X"3804f";
+                
+                -- check move forward
+                var_insn_mem(23)  := X"29221";
+                var_insn_mem(24)  := X"2b003";
+                
+                -- move back -6
+                var_insn_mem(25)  := X"2bdd9";
+                ------------------------------------------------------------
 
-                var_insn_mem(17) := X"00000";
-                var_insn_mem(18) := X"00000";
-                var_insn_mem(19) := X"00000";
-                var_insn_mem(20) := X"00000";
-                var_insn_mem(21) := X"00000";
-                var_insn_mem(22) := X"00000";
-                var_insn_mem(23) := X"00000";
-                var_insn_mem(24) := X"00000";
-                var_insn_mem(25) := X"00000";
-                var_insn_mem(26) := X"00000";
-                var_insn_mem(27) := X"00000";
-                var_insn_mem(28) := X"00000";
-                var_insn_mem(29) := X"00000";
-                var_insn_mem(30) := X"00000";
+
+                ------------------------------------------------------------
+                -- else
+                -- 8011 - store the value at array [$0][$1] into $1
+                var_insn_mem(26)  := X"40021";
+                -- move back -2 instructions
+                var_insn_mem(27)  := X"2bddd";
+                ------------------------------------------------------------
+
+                
+                -- add 1 to k(s) $0 and $12
+                var_insn_mem(28)  := X"33181";
+                var_insn_mem(29) := X"30001";
+                -- bne k($12) !== 8
+                -- needs fixing
+                var_insn_mem(30) := X"2b18c";
+                
                 var_insn_mem(31) := X"00000";
                 var_insn_mem(32) := X"00000";
                 var_insn_mem(33) := X"00000";
