@@ -63,6 +63,8 @@ constant OP_SYSCALL  : std_logic_vector(4 downto 0) := "01111";
 constant OP_LOADI    : std_logic_vector(4 downto 0) := "00010";
 constant OP_BNE      : std_logic_vector(4 downto 0) := "00101";
 constant OP_ADDI     : std_logic_vector(4 downto 0) := "00110";
+constant OP_LA       :  std_logic_vector(4 downto 0) := "00111";
+constant OP_SA       :  std_logic_vector(4 downto 0) := "01000";
 
 
 begin
@@ -72,12 +74,16 @@ begin
     branch  <= '1' when opcode = OP_SYSCALL else '0';
 
     reg_dst    <= '1' when (opcode = OP_ADD
-                                or opcode = OP_LOAD) else
+                                or opcode = OP_LOAD
+                                or opcode = OP_LA
+                                or opcode = OP_SA) else
                   '0';
 
     reg_write  <= '1' when (opcode = OP_ADD 
                             or opcode = OP_ADDI 
                             or opcode = OP_LOAD 
+                            or opcode = OP_LA
+                            or opcode = OP_SA
                             or opcode = OP_LOADI
                             or opcode = OP_SYSCALL) else
                   '0';
