@@ -178,14 +178,14 @@ end component;
 component reg_if_id is
     port(   IF_PC4      : in    std_logic_vector(5 downto 0);
             IF_INSN     : in    std_logic_vector(19 downto 0);
-            IF_line_num, IF_char_idx    : in    std_logic_vector(3 downto 0);
+            IF_line_num, IF_char_idx    : in    std_logic_vector(4 downto 0);
             IF_data_in, IF_sig_flag     : in    std_logic_vector(19 downto 0);
             IF_syscall  : in    std_logic;
             clk, rst, clear : in    std_logic;
 
             ID_PC4      : out   std_logic_vector(5 downto 0);
             ID_INSN     : out   std_logic_vector(19 downto 0);
-            ID_line_num, ID_char_idx    : in    std_logic_vector(3 downto 0);
+            ID_line_num, ID_char_idx    : in    std_logic_vector(4 downto 0);
             ID_data_in, ID_sig_flag     : in    std_logic_vector(19 downto 0);
             ID_syscall  : in    std_logic
         );
@@ -193,15 +193,14 @@ end component;
 
 
 component reg_id_ex is
-    port(   ID_PC4      : in    std_logic_vector(5 downto 0);
-            ID_INSN     : in    std_logic_vector(19 downto 0);
+    port(
             ID_data_in  : in    std_logic_vector(19 downto 0);
             ID_mem_to_reg, ID_reg_write, ID_mem_write : in std_logic;
             ID_ALUsrc, ID_reg_dst, ID_branch : in std_logic;
             ID_syscall  : in std_logic;
             -- ID_write_data   : in    std_logic_vector(19 downto 0);
             ID_reg_data_rs, ID_reg_data_rt, ID_syscall_data_rt, ID_xtnd_off : in std_logic_vector(19 downto 0);
-            ID_wreg_rs, ID_wreg_rt, ID_syscall_addr : in    std_logic_vector(4 downto 0);
+            ID_wreg_rt, ID_wreg_rd, ID_syscall_addr : in    std_logic_vector(4 downto 0);
             clk, rst, clear : in    std_logic;
 
             EX_mem_to_reg, EX_reg_write, EX_mem_write : out std_logic;
@@ -211,7 +210,7 @@ component reg_id_ex is
             EX_INSN     : out   std_logic_vector(19 downto 0);
             EX_data_in  : in    std_logic_vector(19 downto 0);
             EX_reg_data_rs, EX_reg_data_rt, EX_syscall_data_rt, EX_xtnd_off : out std_logic_vector(19 downto 0);
-            EX_wreg_rs, EX_wreg_rt, EX_syscall_addr : in    std_logic_vector(4 downto 0)
+            EX_wreg_rt, EX_wreg_rd, EX_syscall_addr : in    std_logic_vector(4 downto 0)
         );
 end component;
 
@@ -304,7 +303,7 @@ signal sig_bne_insn_extended    : std_logic_vector(5 downto 0);
 -- ID stage
 signal sig_ID_PC4   : std_logic_vector(5 downto 0);
 signal sig_ID_INSN, sig_ID_data_in, sig_ID_sig_flag : std_logic_vector(19 downto 0);
-signal sig_ID_line_num, sig_ID_char_idx : std_logic_vector(3 downto 0);
+signal sig_ID_line_num, sig_ID_char_idx : std_logic_vector(4 downto 0);
 signal sig_ID_syscall : std_logic; 
 -- EX stage
 signal sig_EX_mem_to_reg, sig_EX_reg_write, sig_EX_mem_write : std_logic;
@@ -359,7 +358,7 @@ begin
                carry_out => sig_pc_carry_out );
     
     -- branch here
-    bne_comparator <=  '1' when (not(sig_read_data_a = sig_IF_sig_flag) and (sig_insn(19 downto 15) = "00100")) 
+    bne_comparator <=  '1' when (not(sig_read_data_a = sig_flag) and (sig_insn(19 downto 15) = "00100")) 
                             or (not(sig_read_data_a = sig_read_data_b) and (sig_insn(19 downto 15) = "00101"))
                             else '0';
                             
@@ -417,7 +416,7 @@ begin
               IF_char_idx => character_index,
               IF_data_in => data_in,
               IF_sig_flag => sig_flag,
-              IF_syscall => sig_syscall
+              IF_syscall => sig_syscall,
               clk => clk,
               rst => reset,
               clear => clear,
@@ -500,7 +499,7 @@ begin
               ID_xtnd_off => sig_sign_extended_offset,
               ID_wreg_rt => sig_read_register_b,
               ID_wreg_rd => sig_ID_INSN(4 downto 0),
-              ID_syscall_addr => sig_ID_INSN(14 downto 0),
+              ID_syscall_addr => sig_ID_INSN(14 downto 10),
 
               clk => clk,
               rst => reset,
@@ -565,7 +564,7 @@ begin
               EX_mem_addr => data_memory_address,
 
               clk => clk,
-              rst => reset,
+              reset => reset,
               clear => clear,
 
               MEM_Mem_To_Reg => sig_MEM_mem_to_reg,
@@ -607,7 +606,7 @@ begin
               MEM_wreg_addr => sig_MEM_wreg_addr,
 
               clk => clk,
-              rst => reset,
+              reset => reset,
 
               wb_Mem_To_Reg => sig_wb_mem_to_reg,
               wb_Reg_Write => sig_wb_reg_write,
